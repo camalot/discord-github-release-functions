@@ -143,7 +143,7 @@ module.exports = async function (context, req) {
   try {
     await _processRequest(context, req);
   } catch (err) {
-    if(err) {
+    if(err && JSON.stringify(err) !== "{}") {
       context.log(`error: ${JSON.stringify(err)}`);
       _respond(context, 500, err);
     } else {
